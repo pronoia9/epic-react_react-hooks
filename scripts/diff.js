@@ -4,20 +4,16 @@ const glob = require('glob')
 
 async function go() {
   const files = glob
-    .sync('src/+(exercise|final)/*.+(js|ts|tsx)', {
-      ignore: ['*.d.ts'],
-    })
+    .sync('src/+(exercise|final)/*.+(js|ts|tsx)', { ignore: ['*.d.ts'], })
     .map(f => f.replace(/^src\//, ''))
-  const {first} = await inquirer.prompt([
-    {
+  const {first} = await inquirer.prompt([{
       name: 'first',
       message: `What's the first file`,
       type: 'list',
       choices: files,
     },
   ])
-  const {second} = await inquirer.prompt([
-    {
+  const {second} = await inquirer.prompt([{
       name: 'second',
       message: `What's the second file`,
       type: 'list',
